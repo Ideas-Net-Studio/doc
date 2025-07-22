@@ -23,14 +23,14 @@ Each file should focus on a single user scenario or use case.
 
 The feature file name must be the Jira ticket number associated with the test case
 
-**Example**: `E1UAT-0000.feature`
+**Example**: `UAT-0000.feature`
 
 ## Required Structure
 
 Every feature file should follow this format:
 
 ```
-@E1UAT-####
+@UAT-####
 Feature: <Descriptive Title>
   As a <user role>
   I want to <achieve something>
@@ -44,13 +44,13 @@ Feature: <Descriptive Title>
 
 ## Tagging Convention
 
-- Always include the Jira ticket tag on the first line (e.g., @E1UAT-1149)
+- Always include the Jira ticket tag on the first line (e.g., @UAT-1149)
 - This tag must match a test case in the Xray Test Repository
 - Use additional tags for filtering if needed (e.g., @smoke, @regression)
 
 ## Linking to Jira (Xray)
 
-- The `@E1UAT-####` tag is what links the `.feature` file to the corresponding test case in Xray
+- The `@UAT-####` tag is what links the `.feature` file to the corresponding test case in Xray
 - When the test runs and results are uploaded (via CI), Xray will automatically associate the results with that test case
 
 ## Language Guidelines
@@ -62,10 +62,10 @@ Feature: <Descriptive Title>
 
 ### Example
 ```
-@E1UAT-1149 @smoke
+@UAT-1149 @smoke
 Feature: User logs into the dashboard
   As a valid user
-  I want to log into the E1 dashboard using SSO
+  I want to log into the  dashboard using SSO
   So that I can access my account securely
 
   Scenario: User logs in with valid credentials

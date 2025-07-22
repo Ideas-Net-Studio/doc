@@ -23,9 +23,11 @@ src/Userinterface/uat/common/
 In `fixtures.ts`, we bind objects like `LoginPage` and `CommonPage` to the Playwright test context:
 ```JavaScript
 const testPages = base.extend<Pages>({
+  // UAT-0001: Common Page
   commonPage: async ({ page, request }, use) => {
     await use(new CommonPage(page, request));
   },
+  // UAT-0002: Login Page
   loginPage: async ({ page, request }, use) => {
     await use(new LoginPage(page, request));
   }
@@ -42,9 +44,11 @@ This allows the usage of `loginPage` or `commonPage` directly in step definition
 The logic lives in individual `.ts` files inside `pages/`. Each class represents a specific section or component of the UI (e.g., LoginPage):
 
 ```JavaScript
+// UAT-0002: Login Page
 export class LoginPage {
   constructor(public page: Page, public request: APIRequestContext) {}
 
+  // UAT-0021: Method click Login Button
   async clickLoginButton() {
     await this.page.locator('#login-button').click();
   }
@@ -60,13 +64,34 @@ export class LoginPage {
 
 ## Requesting New Fixtures
 
-If a shared fixture does not yet exist:
+All new fixtures must be associated with a dedicated Jira ticket in the UAT Automation board.
 
-- Implement its logic inside the appropriate Page Object class in `pages/`
-- Add a fixture binding in `fixtures.ts`
-- If unsure, submit a Jira ticket under the UAT Automation board with:
-  - Feature file or scenario
-  - Suggested fixture name and purpose
-  - Related POM if already implemented
+### Ticket Requirements:
 
-This ensures reusable components are discoverable, centralized, and consistent.
+- The ticket must remain open permanently and act as a living history of all updates and changes to the fixture.
+- Every fixture-related Jira ticket should include the following sections:
+  - Description: Brief explanation of what the fixture or method does.
+  - Purpose: Why this logic is needed and when it should be used.
+  - Implementation Details: Specific logic, wait conditions, config references, or interaction patterns.
+  - Example Usage: Code snippet showing how the fixture/method should be called in a test.
+
+### Code Documentation
+
+The corresponding Jira ticket key (e.g., UAT-0000) must be added as a code comment in the fixture or page object:
+
+```JavaScript
+// UAT-0000: Method for navigating to the sign-in page
+async gotoSignInPage() {
+  await this.page.goto(Config.appUrl);
+  await this.page.waitForTimeout(1000);
+}
+```
+
+If the fixture logic is modified, the Jira ticket should be updated with a comment explaining:
+
+- What changed
+- Why the change was made
+- Who made the change
+
+This approach guarantees traceability, maintainability, and acts as integrated documentation directly tied to the fixture's history.
+

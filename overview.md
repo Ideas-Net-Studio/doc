@@ -1,6 +1,6 @@
 ## Purpose of This Space
 
-This space serves as the central documentation hub for all User Acceptance Testing (UAT) automation efforts within the E1-ExceptionsOne Test Automation project. It provides developers and stakeholders with a clear understanding of the tools, structure, and processes involved in executing automated UAT using Playwright and Jira Xray.
+This space serves as the central documentation hub for all User Acceptance Testing (UAT) automation efforts within the Test Automation project. It provides developers and stakeholders with a clear understanding of the tools, structure, and processes involved in executing automated UAT using Playwright and Jira Xray.
 
 ## What Is UAT Testing?
 

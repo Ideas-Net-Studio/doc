@@ -41,7 +41,7 @@ This allows the usage of `loginPage` or `commonPage` directly in step definition
 
 The logic lives in individual `.ts` files inside `pages/`. Each class represents a specific section or component of the UI (e.g., LoginPage):
 
-```
+```JavaScript
 export class LoginPage {
   constructor(public page: Page, public request: APIRequestContext) {}
 

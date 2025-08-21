@@ -146,7 +146,19 @@ ___
 
 ---
 
-## 10. Governance
+## 10. Jenkins Integration
+
+- Jenkins will provide dashboard buttons to trigger specific test suites based on tags.
+
+- Example: UAT team wants to run tests tagged `@utep`. A dedicated button on Jenkins triggers those tests against the main branch in the `QA` environment.
+
+- All runs will execute on the 7PS Test Platform and generate detailed reports.
+
+- Buttons can be configured for common tag sets (e.g., `@uat`, `@release-X.Y`, `@utep`).
+
+___
+
+## 11. Governance
 
 - All tests must be associated with a Jira ticket.
 
